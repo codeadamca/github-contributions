@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <title>GitHub Contributions | Adam Thomas</title>
+
+  <style>
+
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Lora', serif;
+    color: #fff;
+    background-color: #000;
+  }
+
+  #step-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  #step-1-box {
+    text-align: center;
+    width: 100%;
+  }
+
+  input, textarea {
+    font-size: 18px;
+    border: 1px solid #30363d !important;
+    background-color: #0d1117;
+    color: #fff;
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+  }
+  input {
+    font-size: 24px;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  #codeadam {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: 24px;
+    padding: 15px;
+  }
+
+  iframe {
+    width: 100%;
+    max-width: 896px;
+    height: 160px;
+    border: none;
+  }
+
+  a:link,
+  a:hover,
+  a:visited,
+  a:active {
+    text-decoration: none;
+    font-size: 24px;
+  }
+    
+  </style>
+
+</head>
+<body>
+
+  <div id="codeadam">
+    <a href="https://codeadam.ca"><img src="https://codeadam.ca/images/code-block-white.png" width="30"></a>
+  </div>
+
+  <div id="step-1">
+
+    <div id="step-1-box">
+
+      <img src="images/github.jpg" width="150">
+
+      <div class="w3-padding-32">
+        <input class="w3-input" type="text" value="codeadamca" id="username">        
+      </div>     
+
+      <iframe src="" allowtransparency id="iframe"></iframe>
+
+      <div class="w3-padding-32">
+        <textarea class="w3-input" id="embed" rows="4"></textarea>
+      </div>  
+
+      <div class="">
+        <a href="#" id="copy">&#10063;</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+  const delay = 2000
+  const iframeRef = document.getElementById('iframe');
+  const usernameRef = document.getElementById('username');
+  const embedRef = document.getElementById('embed');
+  const copyRef = document.getElementById('copy');
+
+  let timer;
+
+  usernameRef.addEventListener('keyup', () => {
+    clearTimeout(timer);
+    timer = setTimeout(setUsername, delay)
+  });
+
+  function setUsername()
+  {
+    iframeRef.src = 'https://pages.codeadam.ca/github/' + usernameRef.value;
+    embedRef.value = '<iframe src=\"https://pages.codeadam.ca/github/' + 
+      usernameRef.value + 
+      '" width="896" height="160" frameborder="0" allowtransparency id="iframe"></iframe>';
+  }
+
+  window.addEventListener('load', () => {
+    setUsername();
+  });
+
+  copyRef.addEventListener('click', () => {
+
+    embedRef.contenteditable = true;
+    embedRef.focus();
+    document.execCommand('selectAll');
+    document.execCommand("copy");
+    embedRef.contenteditable = false;
+
+    copyRef.focus();
+
+    return false;
+  });
+
+  </script>
+
+
+</body>
+</html>

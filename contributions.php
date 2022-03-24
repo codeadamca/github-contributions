@@ -13,50 +13,74 @@ curl_setopt($ch, CURLOPT_URL, $url);
 $result = curl_exec($ch);
 curl_close($ch);
 
-$start = strpos(
-    $result,
-    '<div class="border py-2 graph-before-activity-overview">'
-);
+if($result == 'Not Found')
+{
+    $html = '<h1><span>'.$user.'</span> not found</h1>';
+}
+else
+{
 
-$end = strpos(
-    $result, 
-    '</svg>',
-    $start
-);
+    $start = strpos(
+        $result,
+        '<div class="border py-2 graph-before-activity-overview">'
+    );
 
-$html = substr(
-    $result, 
-    $start,
-    $end - $start
-).'</div></div>';
+    $end = strpos(
+        $result, 
+        '</svg>',
+        $start
+    );
+
+    $html = substr(
+        $result, 
+        $start,
+        $end - $start
+    ).'</div></div>';
+
+}
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Contributions</title>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+
+  <title>GitHub Contributions | Adam Thomas</title>
 
     <style>
+
+    h1 {
+        text-align: center;
+        padding: 40px;
+        font-weight: normal;
+        font-size: 14px;
+    }
+    h1 span {
+        color: #3AD353;
+    }
 
     body {
         font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
         font-size: 14px;
         line-height: 1.5;
         color: #fff;
-        background-color: #000;
+        background-color: transparent;
     }
     * {
         box-sizing: border-box;
     }
 
     .graph-before-activity-overview {
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
+        border-radius: 6px;
         max-width: 896px;
         margin: auto;
+        background-color: #000;
     }
     .py-2 {
         padding-top: 8px !important;
