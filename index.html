@@ -133,7 +133,7 @@
     setUsername();
   });
 
-  copyRef.addEventListener('click', () => {
+  copyRef.addEventListener('click', (event) => {
 
     embedRef.contenteditable = true;
     embedRef.focus();
@@ -143,7 +143,8 @@
 
     copyRef.focus();
 
-    return false;
+    event.preventDefault();
+
   });
 
   </script>
