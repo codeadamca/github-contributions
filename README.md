@@ -4,7 +4,7 @@ A basic tool to fetch a GitHub user's contributions table and display it in an `
 
 The active version can viewed at:
 
-https://pages.codeadam.ca/github/codeadamca
+https://pages.codeadam.ca/github
 
 An active example can be viewed at:
 
