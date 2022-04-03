@@ -1,4 +1,4 @@
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^.*$ /github/contributions.php [L,QSA]
+RewriteRule ^.*$ /github-contributions/contributions.php [L,QSA]
