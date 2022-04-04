@@ -5,37 +5,46 @@ $url = trim($url, '/');
 $url = explode('/', $url);
 $user = $url[1];
 
-$url = 'https://github.com/users/'.$user.'/contributions';
-
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_URL, $url);
-$result = curl_exec($ch);
-curl_close($ch);
-
-if($result == 'Not Found')
+if($user == 'blank')
 {
-    $html = '<h1>user <span>'.$user.'</span> not found</h1>';
+    $html = '<h1>enter a <span>github username</span></h1>';
 }
 else
 {
 
-    $start = strpos(
-        $result,
-        '<div class="border py-2 graph-before-activity-overview">'
-    );
+    $url = 'https://github.com/users/'.$user.'/contributions';
 
-    $end = strpos(
-        $result, 
-        '</svg>',
-        $start
-    );
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    $result = curl_exec($ch);
+    curl_close($ch);
 
-    $html = substr(
-        $result, 
-        $start,
-        $end - $start
-    ).'</div></div>';
+    if($result == 'Not Found')
+    {
+        $html = '<h1>github user <span>'.$user.'</span> not found</h1>';
+    }
+    else
+    {
+
+        $start = strpos(
+            $result,
+            '<div class="border py-2 graph-before-activity-overview">'
+        );
+
+        $end = strpos(
+            $result, 
+            '</svg>',
+            $start
+        );
+
+        $html = substr(
+            $result, 
+            $start,
+            $end - $start
+        ).'</div></div>';
+
+    }
 
 }
 

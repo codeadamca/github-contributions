@@ -136,7 +136,14 @@
 
   function setUsername()
   {
-    iframeRef.src = 'https://pages.codeadam.ca/github-contributions/' + usernameRef.value;
+    if(usernameRef.value == "")
+    {
+      iframeRef.src = 'https://pages.codeadam.ca/github-contributions/blank';
+    }
+    else
+    {
+      iframeRef.src = 'https://pages.codeadam.ca/github-contributions/' + usernameRef.value;  
+    }
     embedRef.value = '<iframe src=\"https://pages.codeadam.ca/github-contributions/' + 
       usernameRef.value + 
       '" width="896" height="160" frameborder="0" allowtransparency id="iframe"></iframe>';
