@@ -15,7 +15,7 @@ curl_close($ch);
 
 if($result == 'Not Found')
 {
-    $html = '<h1><span>'.$user.'</span> not found</h1>';
+    $html = '<h1>user <span>'.$user.'</span> not found</h1>';
 }
 else
 {
