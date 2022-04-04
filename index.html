@@ -78,6 +78,10 @@
   *:focus {
     outline: none;
   }
+
+  iframe {
+    background:none transparent !important;
+  }
     
   </style>
 
@@ -85,14 +89,14 @@
 <body>
 
   <div id="codeadam">
-    <a href="https://codeadam.ca"><img src="https://codeadam.ca/images/code-block-white.png" width="30"></a>
+    <a href="https://codeadam.ca"><img src="https://codeadam.ca/images/code-block-white.png" width="30" alt=""></a>
   </div>
 
   <div id="step-1">
 
     <div id="step-1-box">
 
-      <a href="https://github.com/codeadamca"><img src="images/github.jpg" width="150"></a>
+      <a href="https://github.com/codeadamca"><img src="images/github.jpg" width="150" alt="GitHub Logo"></a>
 
       <div class="w3-padding-32">
         <input class="w3-input" 
@@ -100,15 +104,19 @@
           value="codeadamca" 
           id="username"
           autocomplete="off" 
-          autocorrect="off" 
           autocapitalize="off" 
           spellcheck="false">        
       </div>     
 
-      <iframe src="" allowtransparency id="iframe"></iframe>
+      <iframe id="iframe"></iframe>
 
       <div class="w3-padding-32">
-        <textarea class="w3-input" id="embed" rows="4"></textarea>
+        <textarea class="w3-input" 
+          id="embed" 
+          rows="4"
+          autocomplete="off" 
+          autocapitalize="off" 
+          spellcheck="false"></textarea>
       </div>  
 
       <div class="">
@@ -121,19 +129,25 @@
 
   <script>
 
-  const delay = 2000;
+  // Create references to each DOM element needed
   const iframeRef = document.getElementById('iframe');
   const usernameRef = document.getElementById('username');
   const embedRef = document.getElementById('embed');
   const copyRef = document.getElementById('copy');
 
+  // Define a variable to set the delay required
+  const delay = 2000;
+
+  // Define a timer to track when typing stops
   let timer;
 
+  // Track when useer stops typing
   usernameRef.addEventListener('keyup', () => {
     clearTimeout(timer);
     timer = setTimeout(setUsername, delay)
   });
 
+  // Use the provided username to display github contributions
   function setUsername()
   {
     if(usernameRef.value == "")

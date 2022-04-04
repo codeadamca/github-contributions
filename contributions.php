@@ -74,12 +74,14 @@ else
         color: #3AD353;
     }
 
+    html, body {
+        background-color: transparent !important;
+    }
     body {
         font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
         font-size: 14px;
         line-height: 1.5;
         color: #fff;
-        background-color: transparent;
     }
     * {
         box-sizing: border-box;
