@@ -76,6 +76,9 @@ else
 
     html, body {
         background-color: transparent !important;
+        overflow: hidden;
+        margin: 0 4px;
+        padding: 0;
     }
     body {
         font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
