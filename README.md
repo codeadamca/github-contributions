@@ -10,6 +10,8 @@ An active example can be viewed at:
 
 https://codeadam.ca/
 
+![GitHub Contributions]()
+
 ## Tutorial Requirements:
 
 * [Visual Studio Code](https://code.visualstudio.com/)
