@@ -10,7 +10,7 @@ An active example can be viewed at:
 
 https://codeadam.ca/
 
-![GitHub Contributions](https://raw.githubusercontent.com/codeadamca/github-contributions/main/screeshot-contributions.png)
+![GitHub Contributions](https://raw.githubusercontent.com/codeadamca/github-contributions/main/screenshot-contributions.png)
 
 ## Tutorial Requirements:
 
