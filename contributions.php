@@ -89,6 +89,13 @@ else
     * {
         box-sizing: border-box;
     }
+    #contributions {
+        cursor: pointer;
+    }
+    #contributions-link {
+        display: block;
+        margin: 10px auto;
+    }
 
     .graph-before-activity-overview {
         border-radius: 6px;
@@ -192,7 +199,21 @@ else
 </head>
 <body>
 
-    <?php echo $html; ?>
+    <div id="contributions">
+        <?php echo $html; ?>
+    </div>
+
+    <script>
+
+    window.addEventListener('load', (event) => {
+        document.getElementById('contributions').addEventListener('click', (event) => {
+            top.location.href = "https://github.com/<?php echo $user; ?>";
+        });
+    });
+
+    </script>
     
+    
+
 </body>
 </html>
