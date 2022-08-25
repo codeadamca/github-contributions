@@ -42,7 +42,11 @@ else
             $result, 
             $start,
             $end - $start
-        ).'</div></div>';
+        ).'</div>    
+            <a href="https://pages.codeadam.ca/github-contributions/" id="contributions-link" target="_top">
+                <img src="https://codeadam.ca/images/code-block-white.png" width="30">
+            </a>
+        </div>';
 
     }
 
@@ -89,12 +93,12 @@ else
     * {
         box-sizing: border-box;
     }
-    #contributions {
-        cursor: pointer;
-    }
     #contributions-link {
         display: block;
-        margin: 10px auto;
+        text-align: center;
+    }
+    body > div > div {
+        cursor: pointer;
     }
 
     .graph-before-activity-overview {
@@ -199,21 +203,17 @@ else
 </head>
 <body>
 
-    <div id="contributions">
-        <?php echo $html; ?>
-    </div>
+    <?php echo $html; ?>
 
     <script>
 
     window.addEventListener('load', (event) => {
-        document.getElementById('contributions').addEventListener('click', (event) => {
+        document.getElementsByClassName('js-calendar-graph')[0].addEventListener('click', (event) => {
             top.location.href = "https://github.com/<?php echo $user; ?>";
         });
     });
 
     </script>
-    
-    
 
 </body>
 </html>
