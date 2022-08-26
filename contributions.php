@@ -42,10 +42,11 @@ else
             $result, 
             $start,
             $end - $start
-        ).'</div>    
-            <a href="https://pages.codeadam.ca/github-contributions/" id="contributions-link" target="_top">
-                <img src="https://codeadam.ca/images/code-block-white.png" width="30">
-            </a>
+        ).'</div>   
+            '.($_SERVER['HTTP_REFERER'] != 'https://pages.codeadam.ca/github-contributions/' ? 
+                '<a href="https://pages.codeadam.ca/github-contributions/" id="contributions-link" target="_top">
+                    <img src="https://codeadam.ca/images/code-block-white.png" width="30">
+                </a>' : '' ).'
         </div>';
 
     }
@@ -96,6 +97,7 @@ else
     #contributions-link {
         display: block;
         text-align: center;
+        margin-top: 3px;
     }
     body > div > div {
         cursor: pointer;
@@ -208,9 +210,27 @@ else
     <script>
 
     window.addEventListener('load', (event) => {
+
         document.getElementsByClassName('js-calendar-graph')[0].addEventListener('click', (event) => {
             top.location.href = "https://github.com/<?php echo $user; ?>";
         });
+
+
+        // console.log('<?php echo $user; ?>');
+        // console.log('<?php echo $_SERVER['HTTP_REFERER']; ?>');
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // console.log(this.responseText);
+            }
+        };
+        
+        xhr.open("POST", "https://console.codeadam.ca/api/contributions/store", true);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send("username=<?php echo urlencode( $user ); ?>&referer=<?php echo urlencode($_SERVER['HTTP_REFERER']); ?>");
+
     });
 
     </script>
