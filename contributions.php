@@ -229,7 +229,7 @@ else
         xhr.open("POST", "https://console.codeadam.ca/api/contributions/store", true);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send("username=<?php echo urlencode( $user ); ?>&referer=<?php echo urlencode($_SERVER['HTTP_REFERER']); ?>");
+        xhr.send("github=<?php echo urlencode( $user ); ?>&referer=<?php echo urlencode($_SERVER['HTTP_REFERER']); ?>");
 
     });
 
