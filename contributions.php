@@ -29,7 +29,8 @@ else
 
         $start = strpos(
             $result,
-            '<div class="border py-2 graph-before-activity-overview">'
+            // '<div class="border py-2 graph-before-activity-overview">'
+            '<svg width="823" height="128" class="js-calendar-graph-svg">'
         );
 
         $end = strpos(
@@ -38,16 +39,18 @@ else
             $start
         );
 
-        $html = substr(
+        $html = '<div class="border py-2 graph-before-activity-overview">'.substr(
             $result, 
             $start,
             $end - $start
-        ).'</div>   
+        ).'<br>
             '.($_SERVER['HTTP_REFERER'] != 'https://pages.codeadam.ca/github-contributions/' ? 
                 '<a href="https://pages.codeadam.ca/github-contributions/" id="contributions-link" target="_top">
                     <img src="https://codeadam.ca/images/code-block-white.png" width="30">
                 </a>' : '' ).'
         </div>';
+
+        $html = str_replace('translate(15, 20)', '', $html);
 
     }
 
@@ -132,7 +135,7 @@ else
         fill: #fff;
     }
     text {
-        display: block;
+        display: none;
         white-space: nowrap;
     }
     .text-center {
