@@ -39,16 +39,25 @@ else
             $start
         );
 
-        $html = '<div class="border py-2 graph-before-activity-overview">'.substr(
+        $html = '<div class="border py-2 graph-before-activity-overview">
+            <div>'.substr(
             $result, 
             $start,
             $end - $start
-        ).'<br>
+        ).'</div><div>
             '.($_SERVER['HTTP_REFERER'] != 'https://pages.codeadam.ca/github-contributions/' ? 
                 '<a href="https://pages.codeadam.ca/github-contributions/" id="contributions-link" target="_top">
                     <img src="https://codeadam.ca/images/code-block-white.png" width="30">
                 </a>' : '' ).'
+            </div>
         </div>';
+
+        $html = str_replace(
+            '<svg width="823" height="128" class="js-calendar-graph-svg">',
+            '<svg width="100%" viewBox="0 0 823 115" class="js-calendar-graph-svg">',
+            $html
+        );
+        
 
         $html = str_replace('translate(15, 20)', '', $html);
 
@@ -115,6 +124,9 @@ else
     body > div > div {
         cursor: pointer;
     }
+    svg {
+        display: block;
+    }
 
     .graph-before-activity-overview {
         border-radius: 6px;
@@ -123,7 +135,7 @@ else
         background-color: #000;
     }
     .py-2 {
-        padding-top: 8px !important;
+        padding-top: 12px !important;
         padding-bottom: 8px !important;
     }
     .border {
