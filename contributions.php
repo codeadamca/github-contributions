@@ -1,9 +1,15 @@
 <?php
 
-$url = $_SERVER['REQUEST_URI'];
-$url = trim($url, '/');
-$url = explode('/', $url);
-$user = $url[1];
+if(isset($_GET['test'])) $user = 'codeadamca';
+else
+{
+
+    $url = $_SERVER['REQUEST_URI'];
+    $url = trim($url, '/');
+    $url = explode('/', $url);
+    $user = $url[1];
+
+}
 
 if($user == 'blank')
 {
@@ -30,21 +36,21 @@ else
         $start = strpos(
             $result,
             // '<div class="border py-2 graph-before-activity-overview">'
-            '<svg width="823" height="128" class="js-calendar-graph-svg">'
+            '<tbody'
         );
 
         $end = strpos(
             $result, 
-            '</svg>',
+            '</tbody>',
             $start
         );
 
         $html = '<div class="border py-2 graph-before-activity-overview">
-            <div>'.substr(
+            <div><table>'.substr(
             $result, 
             $start,
             $end - $start
-        ).'</div><div>
+        ).'</table></div><div>
             '.($_SERVER['HTTP_REFERER'] != 'https://pages.codeadam.ca/github-contributions/' ? 
                 '<a href="https://pages.codeadam.ca/github-contributions/" id="contributions-link" target="_top">
                     <img src="https://codeadam.ca/images/code-block-white.png" width="30">
@@ -52,12 +58,17 @@ else
             </div>
         </div>';
 
+        /*
         $html = str_replace(
             '<svg width="823" height="128" class="js-calendar-graph-svg">',
             '<svg width="100%" viewBox="0 0 823 115" class="js-calendar-graph-svg">',
             $html
         );
-        
+        */
+
+        while(preg_match_all('#(<span.*?>)(.*?)(</span>)#', $html)) {  
+            $html = preg_replace('#(<span.*?>)(.*?)(</span>)#', '', $html);
+        }
 
         $html = str_replace('translate(15, 20)', '', $html);
 
@@ -107,44 +118,38 @@ else
         margin: 0 4px;
         padding: 0;
     }
+
+    * {
+        box-sizing: border-box;
+    }
+
     body {
         font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
         font-size: 14px;
         line-height: 1.5;
         color: #fff;
     }
-    * {
-        box-sizing: border-box;
+
+
+    /*
+
+    body > div > div {
+        cursor: pointer;
     }
+
     #contributions-link {
         display: block;
         text-align: center;
         margin-top: 3px;
     }
-    body > div > div {
-        cursor: pointer;
-    }
+
     svg {
         display: block;
     }
 
-    .graph-before-activity-overview {
-        border-radius: 6px;
-        max-width: 896px;
-        margin: auto;
-        background-color: #000;
-    }
-    .py-2 {
-        padding-top: 12px !important;
-        padding-bottom: 8px !important;
-    }
-    .border {
-        border: 1px solid #30363d !important;
-    }
-
     .ContributionCalendar-label {
         font-size: 9px;
-        fill: #fff;
+        fill: #fff; 
     }
     text {
         display: none;
@@ -152,26 +157,6 @@ else
     }
     .text-center {
         text-align: center !important;
-    }
-    
-    .ContributionCalendar-day, 
-    .ContributionCalendar-day[data-level="0"] {
-        fill: #161b22;
-        shape-rendering: geometricPrecision;
-        outline: 1px solid rgba(27, 31, 35, 0.06);
-        outline-offset: -1px;
-    }
-    .ContributionCalendar-day[data-level="1"] {
-        fill: #0e4429;
-    }
-    .ContributionCalendar-day[data-level="2"] {
-        fill: #006d32;
-    }
-    .ContributionCalendar-day[data-level="3"] {
-        fill: #26a641;
-    }
-    .ContributionCalendar-day[data-level="4"] {
-        fill: #39d353;
     }
 
     .Link--muted {
@@ -223,6 +208,54 @@ else
     }
     .flex-column {
         flex-direction: column !important;
+    }
+    */
+
+    .graph-before-activity-overview {
+        border-radius: 6px;
+        max-width: 896px;
+        margin: auto;
+        background-color: #000;
+    }
+    .py-2 {
+        padding-top: 12px !important;
+        padding-bottom: 8px !important;
+    }
+    .border {
+        border: 1px solid #30363d !important;
+    }
+    
+    .ContributionCalendar-day, 
+    .ContributionCalendar-day[data-level="0"] {
+        fill: #161b22;
+        shape-rendering: geometricPrecision;
+        outline: 1px solid rgba(27, 31, 35, 0.06);
+        outline-offset: -1px;
+    }
+    .ContributionCalendar-day[data-level="1"] {
+        background-color: #0e4429;
+    }
+    .ContributionCalendar-day[data-level="2"] {
+        background-color: #006d32;
+    }
+    .ContributionCalendar-day[data-level="3"] {
+        background-color: #26a641;
+    }
+    .ContributionCalendar-day[data-level="4"] {
+        background-color: #39d353;
+    }
+
+    table {
+        margin: 0 auto 10px;
+    }
+
+    tr td:first-child {
+        display: none;
+    }
+
+    a {
+        display: block;
+        text-align: center !important;
     }
 
     </style>
