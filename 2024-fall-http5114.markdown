@@ -7,7 +7,7 @@
 |                                       | Name        | Profile                                  |
 | ------------------------------------- | ----------- | ---------------------------------------- |
 | ![Adam Thomas](images/codeadamca.png) | Adam Thomas | [codeadamca](faculty/codeadamca)         |
-| ![Mohith](images/mohithjegan.jpg)     | Mohith      | [Mohith](https://github.com/MohithJegan) |
+| ![Mohith](images/mohithjegan.jpg)     | Mohith      | [Mohith](students/mohithjegan.markdown) |
 
 ### Faculty
 
