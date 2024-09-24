@@ -1,0 +1,24 @@
+<style>@import url("//readme.codeadam.ca/readme.css");</style>
+
+## Navdeep Kaur
+
+![deeppatel](../images/deep291998.jpg)
+
+In this technical era, I am giving myself time and have taken opportunities to enhance my skills in web development. I have done my master in Computer Science and now pursuing web development course at Humber College.
+
+LinkedIn: [Deep patel](https://www.linkedin.com/in/deep-patel-14b7aa1b9/)  
+GitHub: [Deep291998](https://github.com/Deep291998)  
+
+### Projects
+
+| Project | |
+| - | - |
+| Tasks | [https://task.brickmoo.com/](https://task.brickmoo.com/) |
+
+[&#10132; Back to Class List](/)
+
+---
+
+<a href="https://brickmmo.com">
+<img src="https://brickmmo.com/images/brickmmo-logo-horizontal.jpg" width="100">
+</a>
