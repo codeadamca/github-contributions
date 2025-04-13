@@ -5,7 +5,7 @@ A basic tool to fetch a GitHub user's contributions table and display it in an `
 ![GitHub Contributions](_readme/screenshot-contributions.png)
 
 > The active version can viewed at:  
-> https://pages.codeadam.ca/github
+> https://pages.codeadam.ca/github-contributions
 
 > An active example can be viewed at:  
 > https://codeadam.ca/
